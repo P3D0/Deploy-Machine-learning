@@ -18,7 +18,7 @@ def loadHasilLabel():
 
 app = Flask(__name__)
 #import model
-model = tf.keras.models.load_model('ModelP3D02.h5')
+# model = tf.keras.models.load_model('ModelP3D02.h5')
 #load tokenizer
 with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
