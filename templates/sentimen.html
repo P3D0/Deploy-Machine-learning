@@ -55,11 +55,11 @@
                         <p style="text-align:center"> Text yang dimasukan : {{kata}}</p>
                         <p style="text-align:center"> Text yang dimasukan : {{sentiimen}}</p>
                         {% if sentiimen == 0 %}
-                        <h2 class="text-center" style="color:red;">{{sentiimen}}</h2>
-                        {% elif sentiimen == 1 %}
-                        <h2 class="text-center">{{sentiimen}}</h2>
+                        <h2 class="text-center" style="color:red;">Sentimen Negatif</h2>
                         {% elif sentiimen == 2 %}
-                        <h2 class="text-center" style="color:blue;">{{sentiimen}}</h2>
+                        <h2 class="text-center" style="color:blue;">Sentimen Positif</h2>
+                        {% else %}
+                        <h2 class="text-center" style="color:rgb(8, 8, 8);">Sentimen Netral</h2>
                         {% endif %}
                     </div>
                 </div>
