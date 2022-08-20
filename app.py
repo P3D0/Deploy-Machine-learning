@@ -56,6 +56,16 @@ def labeling():
 def visualisasi():
     return render_template('visualisasi.html')
 
+@app.route('/sentimen', methods=['GET', 'POST'])
+def sentimen():
+    if request.method == 'GET':
+        return render_template('sentimen.html')
+    elif request.method == 'POST':
+        terxt = request.form.get('textnya')
+        return render_template('sentimen.html', kata = terxt)
+        # return render_template('sentimen.html', sentiimen = data)
+
+
 
 if __name__ == '__main__':
     app.run()

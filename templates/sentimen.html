@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Visualisasi</title>
+        <title>Klasifikasi Sentimen</title>
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
         <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     
@@ -33,46 +33,29 @@
             <div class="header">Analisis Sentimen Halodoc.</div>
             <div class="info">
                 <div class="card">
+                    <div class="card-header">
+                        Sentiimen
+                    </div>
                     <div class="card-body">
-                        <div class="mt-4">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="chart-wrapper">
-                                        <canvas id="myChart"></canvas>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card">
-                                        <div class="card-header">
-                                        Hasil Sentimen
-                                        </div>
-                                        <div class="card-body">
-                                            <table id="proxies"   style="width: 100%">
-                                                <tr class="head-table">
-                                                    <td>Sentimen</td>
-                                                    <td>Total</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Positif</td>
-                                                    <td>11387</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Negatif</td>
-                                                    <td>4502</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Netral</td>
-                                                    <td>3334</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
+                        <form method="post">
+                            <div class="col-lg-12">
+                                <textarea class="form-control" rows="12" name="textnya" placeholder="Silahkan masukan kata"></textarea>
+                                <br>
+                                <button class="btn btn-outline-danger">Submit</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
+                {% if request.method == 'POST' %}
+                <div class="card">
+                    <div class="card-header">
+                        Hasil Prediksi
+                    </div>
+                    <div class="card-body">
+                        <p style="text-align:center"> Text yang dimasukan : {{kata}}</p>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
