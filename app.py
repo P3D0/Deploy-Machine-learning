@@ -6,6 +6,11 @@ def loadCSV():
     df1 = df.head(1000)
     return df1
 
+def loadHasilLabel():
+    df = pd.read_csv('Labeling.csv')
+    df1 = df.head(1000)
+    return df1
+
 app = Flask(__name__)
 #Dashboard
 @app.route('/')
@@ -38,6 +43,19 @@ def preprocessing():
         df1 = df1[['userName','content']]
     results = [tuple(x) for x in df1.values]
     return render_template('preprocessing.html', header = heading, results = results, judul = judul)
+
+@app.route('/labeling', methods=['GET', 'POST'])
+def labeling():
+    df1 = loadHasilLabel()
+    heading = ('Review', 'Skor Polaritas', 'Sentimen')
+    df1 = df1[['Remove_noise','nilai','sentimen']]
+    results = [tuple(x) for x in df1.values]
+    return render_template('labeling.html', header = heading, results = results)
+
+@app.route('/visualisasi')
+def visualisasi():
+    return render_template('visualisasi.html')
+
 
 if __name__ == '__main__':
     app.run()

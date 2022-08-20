@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Labeling</title>
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
         <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     
@@ -32,14 +32,29 @@
         <div class="main_content">
             <div class="header">Analisis Sentimen Halodoc.</div>
             <div class="info">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                        Deskripsi
-                        </div>
-                        <div class="card-body">
-                            <p>Halodoc merupakan sebuah aplikasi dan situs web asal Indonesia yang bergerak di bidang kesehatan. PT Media Dokter Investama, perusahaan aplikasi ini didirikan pada tahun 2016 di Jakarta oleh Jonathan Sudharta. . Tujuan dari aplikasi Halodoc yaitu simplifying healthcare atau memberi kemudahan akses Kesehatan untuk masyarakat Indonesia. Halodoc merupakan platform aman yang menghubungkan pasien dengan dokter berlisensi, asuransi, laboratorium, dan apotek menjadi satu dalam aplikasi seluler. Visi dan misi Halodoc berdasarkan dari company profile yang penulis dapatkan dari HR Halodoc melalui email yaitu, visi adalah menjadi pendamping perawatan kesehatan digital terpercaya dan misinya adalah mempermudah akses perawatan kesehatan melalui teknologi.</p>
-                        </div>
+                <div class="card">
+                    <div class="card-header">
+                        Hasil Labeling
+                    </div>
+                    <div class="card-body">
+                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    {% for i in header %}
+                                        <th>{{i}}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in results%}
+                                <tr>
+                                    {% for j in i %}
+                                        <td>{{ j }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
