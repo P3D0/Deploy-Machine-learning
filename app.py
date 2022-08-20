@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import pandas as pd
 
 #buat model
-from tensorflow.keras.models import load_model
+# import tensorflow as tf
 import numpy as np
 import pickle
 
@@ -18,7 +18,7 @@ def loadHasilLabel():
 
 app = Flask(__name__)
 #import model
-model = load_model("ModelP3D02.h5")
+# model = tf.keras.models.load_model('ModelP3D02.h5')
 #load tokenizer
 with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
