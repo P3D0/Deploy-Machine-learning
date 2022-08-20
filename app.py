@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import pandas as pd
 
 #buat model
-import tensorflow as tf
+# import tensorflow as tf
 import numpy as np
 import pickle
 
