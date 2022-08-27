@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request
-import pandas as pd
-
-#buat model
-# import tensorflow as tf
+#import model
+import tensorflow as tf
 import numpy as np
+import pandas as pd
 import pickle
+from flask import Flask, render_template, request
 
 def loadCSV():
     df = pd.read_csv('Preprocessing.csv')
@@ -18,7 +17,7 @@ def loadHasilLabel():
 
 app = Flask(__name__)
 #import model
-# model = tf.keras.models.load_model('ModelP3D02.h5')
+model = tf.keras.models.load_model('ModelP3D02.h5')
 #load tokenizer
 with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
@@ -75,20 +74,20 @@ def sentimen():
         terxt = request.form.get('textnya')
 
         #prediksii
-        # max_length = 200
+        max_length = 200
         data = [terxt] #ngubah jadi dictionary
         enc = tokenizer.texts_to_sequences(data)
-        # enc = tf.keras.preprocessing.sequence.pad_sequences(enc, maxlen=max_length, dtype='int32', value=0)
-        # sentiment = model.predict(enc)[0]
-        # if (np.argmax(sentiment) == 0):
-        #     sentimennya = 0
-        # elif (np.argmax(sentiment) == 1):
-        #     sentimennya = 1
-        # else:
-        #     sentimennya = 2
+        enc = tf.keras.preprocessing.sequence.pad_sequences(enc, maxlen=max_length, dtype='int32', value=0)
+        sentiment = model.predict(enc)[0]
+        if (np.argmax(sentiment) == 0):
+            sentimennya = 0
+        elif (np.argmax(sentiment) == 1):
+            sentimennya = 1
+        else:
+            sentimennya = 2
 
 
-        return render_template('sentimen.html',sentiimen = enc, kata = terxt)
+        return render_template('sentimen.html',sentiimen = sentimennya, kata = terxt)
         # return render_template('sentimen.html', sentiimen = data)
 
 
